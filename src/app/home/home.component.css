@@ -1,0 +1,11 @@
+.cl{
+    padding-top: 2%;
+    margin-top: 2%;
+    background-color: #fcb77b;
+}
+.selector-for-some-widget {
+    box-sizing: content-box;
+  }
+  .carousel-inner{
+      width:40%;
+  }

@@ -1,0 +1,10 @@
+.container{
+    width: 100%;
+    bottom: 0;
+}
+.btn-primary{
+    background-color: #f04c10;
+    /* border-block-color: #f04c10; */
+    /* border-block-end-color: #f04c10; */
+    border-color: #f04c10;
+}

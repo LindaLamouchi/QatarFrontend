@@ -1,0 +1,29 @@
+.y{
+    background-color: #242423;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #f6f8f2;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 11px;
+    line-height: 1.428571429;
+    
+    padding-top: 1%;
+}
+.c{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 10px;
+    
+}
+.icon{
+    font-size: 30px;
+    margin-left: 7px;
+    color: #160303;
+}
+.footer2{
+   
+    padding-top: 9px;
+    
+    background-color: #1f1f1e;
+}
