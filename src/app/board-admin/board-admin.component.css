@@ -5,3 +5,12 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+.container{
+    width: max-content;
+}
+.column{
+    width: 48%;
+    margin-right: 1%;
+    margin-left: 1%;
+    background-color: rgba(147, 197, 82, 0.123);
+}

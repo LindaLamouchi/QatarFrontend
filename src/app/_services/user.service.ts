@@ -8,6 +8,9 @@ const API_URL = 'http://localhost:8090/api/test/';
   providedIn: 'root'
 })
 export class UserService {
+ 
+
+ 
 
   constructor(private http: HttpClient) { }
 
@@ -29,7 +32,32 @@ export class UserService {
 
   
   getTeamList(): Observable<any> {
-    return this.http.get('localhost:8090/getTeams');
+    return this.http.get('http://localhost:8090/getTeams',{responseType:'json'});
+  }
+
+  saveTeam(name:any) {
+     this.http.post('http://localhost:8090/addTeam', {
+      name: name,
+      players: '',
+      coach: ''
+    })
+    .subscribe(
+      () => {
+        console.log('Enregistrement terminé !');
+      },
+      (error) => {
+        console.log('Erreur ! : ' + error);
+      }
+    );
+  }
+  deleteTeam(id: number) {
+    return this.http.delete('http://localhost:8090/deleteTeam/'+id);
+  }
+  getPlayers(id:number) {
+    return this.http.get('http://localhost:8090/getPlayerT/'+id,{responseType:'json'});
+  }
+  getPlayersList() {
+    return this.http.get('http://localhost:8090/getPlayers',{responseType:'json'});
   }
 }
 

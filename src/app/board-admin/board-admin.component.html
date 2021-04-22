@@ -1,30 +1,109 @@
-<div class="container">
-    <header class="jumbotron">
-      <p>{{ content }}</p>
-    </header>
-  </div>
- 
+<div style="padding-left: 2%; padding-right: 2%;">
   <div>
-    <table class="table">
-      <thead>
-        <tr class="table-secondary">
-        <th scope="row">Team</th>
-        <th scope="col">Coach</th>
-        <th scope="col" colspan="2">Controle</th>
-        </tr>
-       </thead>
-       <tbody>
+      <header class="jumbotron">
+        <p>{{ content }}</p>
+      </header>
+  </div>
+   <div class="row">
+    <div class="column"> <!--Teams Configuration-->
+      <!-- Here you can add a new team name it is hidden : onClick on add new team it'll become visible-->
+      <div 
+       class="input-group teamn" *ngIf='div1' style="margin-bottom: 1%;">
+        
+       <input type="text" 
+        name="name"
+        [(ngModel)]="name"
+        class="form-control" placeholder="Team name" aria-label="Team username" aria-describedby="basic-addon2">
        
-      <tr> 
-       
-        <td>Barcelone</td>
-        <td>Ena</td>
-        <td colspan="2">
-         <button>Get more info</button>
-        </td>
-      </tr>
-       
-      </tbody>
+        <div class="input-group-append">
+          <button class="btn btn-outline-info" type="button" (click)="onCl()" >Save</button>
+          <button class="btn btn-outline-info" type="button" (click)='divT()'>Cancel</button>
+        </div>
+      </div>
+      <!--OnClick button we switch visibility of the inputText to visible-->
+      <div style="text-align: right; padding-bottom: 0.4%;">   
+         <button type="button" class="btn btn-warning" (click)='divT()'>Add a new Team</button>
+      </div>
+      <!--Here we load all Teams data : onClick on info we'll get to see all players of a specific Team -->
+      <div>
+        <table class="table table-hover" *ngIf="dataSource" max-width='fit-content'>
+          <thead>
+           
+          
+            <tr class="table-secondary">
+              <th scope="col"></th>
+              <th scope="col">ID</th>
+              <th scope="col">Team</th>
+              <th scope="col" colspan="2">Controle</th>
+            </tr>
+         </thead>
+         <tbody>
+           
+          <tr *ngFor="let team of dataSource | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+             <td>#</td>
+              <td>{{team.idTeam}}</td>
+              <td>{{team.name}}</td>
+            <td colspan="2">
+              <button type="button" class="btn btn-danger" style="margin-right:'5%'" (click)='onEdit(team.idTeam)'>Get more inf.</button>
+              <button type="button" class="btn btn-warning"  (click)='onSupprime(team.idTeam)'>Delete</button>
+            </td>
+          </tr>
+           
+          </tbody>
+        </table>
+        <ngb-pagination class="d-flex justify-content-end" [(page)]="page" [pageSize]="pageSize" [collectionSize]="dataSource.length"></ngb-pagination>
       
-  </table>
+      </div>
+    </div>
+  
+  
+    <!------------------------------------------------------------------------------------------------------->
+   
+    <div class="column"> <!--Players Configuration-->
+      
+      <!--OnClick button we are redirected to add new player page-->
+      <div style="text-align: right; padding-bottom: 0.4%;">   
+         <button type="button" class="btn btn-warning" (click)='newPlayer()'>Add a new Player</button>
+      </div>
+      <!--Here we load all Teams data : onClick on info we'll get to see all players of a specific Team -->
+      <div>
+        <table class="table table-hover" *ngIf="dataplayers" max-width='fit-content'>
+          <thead>
+           
+          
+            <tr class="table-secondary">
+              <th scope="col"></th>
+              <th scope="col">ID Player</th>
+              <th scope="col">Age</th>
+              <th scope="col">F_name</th>
+              <th scope="col">L_name</th>
+              <th scope="col">Role</th>
+              <th scope="col">Team</th>
+              <th scope="col" colspan="2">Controle</th>
+            </tr>
+         </thead>
+         <tbody>
+                    
+          <tr *ngFor="let playerr of dataplayers | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+             <td>#</td>
+              <td>{{playerr.idPlayer}}</td>
+              <td>{{playerr.age}}</td>
+              <td>{{playerr.firstName}}</td>
+              <td>{{playerr.lastName}}</td>
+              <td>{{playerr.playerRole}}</td>
+              <td>{{playerr.team.name}}</td>
+            <td colspan="2">
+              <button type="button" class="btn btn-danger" style="margin-right:'5%'" (click)='onEditPlayer(playerr.id_player)'>Get more inf.</button>
+              <button type="button" class="btn btn-warning"  (click)='ondeletePlayer(playerr.id_player)'>Delete</button>
+            </td>
+          </tr>
+           
+          </tbody>
+        </table>
+        <ngb-pagination class="d-flex justify-content-end" [(page)]="page" [pageSize]="pageSize" [collectionSize]="dataplayers.length"></ngb-pagination>
+      
+      </div>
+  
+    </div>
+  </div>
   </div>

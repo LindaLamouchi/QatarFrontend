@@ -1,0 +1,56 @@
+<div>
+    <p class="title">Team Info</p>
+    <div class="row">
+       <div class="column">
+           <div class="card">
+            Players
+           </div>
+           <div>
+            <table class="table table-hover" *ngIf="dataPl" max-width='fit-content'>
+              <thead>
+                <tr class="table-secondary" style="font-weight: normal;">
+                  <th scope="col"></th>
+                  <th scope="col">idPlayer</th>
+                  <th scope="col">firstName</th>
+                  <th scope="col">lastName</th>
+                  <th scope="col">age</th>
+                  <th scope="col">playerRole</th>
+                  <th scope="col" colspan="2">Controle</th>
+                </tr>
+             </thead>
+             <tbody>
+               
+              <tr *ngFor="let player of dataPl | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+                  <th scope="row"><div class="spinner-border text-success spinner-grow-sm"></div></th>
+                  <td>{{player.idPlayer}}</td>
+                  <td>{{player.firstName}}</td>
+                  <td>{{player.lastName}}</td>
+                  <td>{{player.age}}</td>
+                  <td>{{player.playerRole}}</td>
+                <td colspan="2">
+                 
+                </td>
+              </tr>
+               
+              </tbody>
+            </table>
+            <ngb-pagination class="d-flex justify-content-end" [(page)]="page" [pageSize]="pageSize" [collectionSize]="dataPl.length"></ngb-pagination>
+          
+          </div>
+       </div>  
+        <div class="column">
+            <div class="card">
+                
+                id_player	age	first_name	last_name	player_role	team_id
+            
+            
+            </div>
+           
+
+        </div>  
+    </div>
+
+
+
+</div>
+

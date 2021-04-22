@@ -1,11 +1,30 @@
-.cl{
-    padding-top: 2%;
-    margin-top: 2%;
-    background-color: #fcb77b;
-}
-.selector-for-some-widget {
-    box-sizing: content-box;
+
+ 
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
-  .carousel-inner{
-      width:40%;
+  .cont {
+    text-align: center;
+    color: black;
+    padding-left: 11%;
+    width: 48%;
+  }
+  .row{
+      padding-top: 2%;
+      background-color: rgba(3, 27, 4, 0.247);
+  }
+  .deux{
+      margin-left: 1%;
+      width: 38%;
+      
+  }
+  .text-block {
+    padding: 20% 20% ;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.658);
+    color: white;
   }

@@ -21,6 +21,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { authInterceptorProviders } from './_helpers/auth.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './footer/footer.component';
+import { ControleTeamComponent } from './controle-team/controle-team.component';
+import { AddPlayerComponent } from './add-player/add-player.component';
 
 
 
@@ -35,7 +37,9 @@ import { FooterComponent } from './footer/footer.component';
     BoardAdminComponent,
     BoardModeratorComponent,
     BoardUserComponent,
-    FooterComponent
+    FooterComponent,
+    ControleTeamComponent,
+    AddPlayerComponent
   ],
   imports: [
     BrowserModule,

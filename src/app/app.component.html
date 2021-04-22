@@ -34,16 +34,19 @@
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
-      <li class="nav-item">
+      <li class="nav-item" style="margin-right: 0%;">
+        
         <a href="/profile" class="nav-link" routerLink="profile">{{ username }}</a>
+        
       </li>
+      <li style="padding-top: 2%; padding-right: 0%;"  class="nav-item logo" > <th scope="row"><div class="spinner-border text-success spinner-grow-sm"></div></th></li>
+
       <li class="nav-item">
         <a href class="nav-link" (click)="logout()">LogOut</a>
       </li>
     </ul>
   </nav>
-
-  <div class="container">
+  <div>
     <router-outlet></router-outlet>
   </div>
   <app-footer></app-footer>
