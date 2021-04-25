@@ -1,15 +1,38 @@
-<div>
+<div class="content">
     <p class="title">Team Info</p>
     <div class="row">
+      <div class="column font-weight-light">
+       
+        Would you like to add a player to this list? Please Choose from the Drop-Down list below:
+        <br>
+        <select type="text" [(ngModel)]="selectedObject">
+        <option value="0" class="text-muted">-Select a player-</option>
+        <option *ngFor='let dl of listItems' class="font-weight-normal" [ngValue]="dl">
+          {{dl.firstName}}
+          {{dl.lastName}}
+        </option>
+      </select> 
+      <br><br>
+      <button class="btn-warning" (click)='getPlayer()'>Add a player</button>
+      <br><br><br>
+      <div class="badge badge-primary text-wrap" style="width: 6rem;">
+        Note :
+     </div>
+       <br>
+      <div class="note font-weight-light">
+       If you add a Player X that is aleardy a team member; you should be aware
+       that he will be systematically deleted from that team and added to this referred one
+      </div>   
+
+      </div>
        <div class="column">
            <div class="card">
-            Players
+           <h3>Players</h3> 
            </div>
            <div>
             <table class="table table-hover" *ngIf="dataPl" max-width='fit-content'>
               <thead>
                 <tr class="table-secondary" style="font-weight: normal;">
-                  <th scope="col"></th>
                   <th scope="col">idPlayer</th>
                   <th scope="col">firstName</th>
                   <th scope="col">lastName</th>
@@ -21,7 +44,6 @@
              <tbody>
                
               <tr *ngFor="let player of dataPl | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-                  <th scope="row"><div class="spinner-border text-success spinner-grow-sm"></div></th>
                   <td>{{player.idPlayer}}</td>
                   <td>{{player.firstName}}</td>
                   <td>{{player.lastName}}</td>
@@ -34,20 +56,10 @@
                
               </tbody>
             </table>
-            <ngb-pagination class="d-flex justify-content-end" [(page)]="page" [pageSize]="pageSize" [collectionSize]="dataPl.length"></ngb-pagination>
+            <ngb-pagination class="d-flex justify-content-end" [(page)]="page" [pageSize]="pageSize" [collectionSize]="size"></ngb-pagination>
           
           </div>
        </div>  
-        <div class="column">
-            <div class="card">
-                
-                id_player	age	first_name	last_name	player_role	team_id
-            
-            
-            </div>
-           
-
-        </div>  
     </div>
 
 

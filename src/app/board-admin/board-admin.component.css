@@ -4,7 +4,11 @@
     margin-top: 1rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
+    color: black;
+    background-color: #ffc107;
 }
+
+
 .container{
     width: max-content;
 }
@@ -12,5 +16,19 @@
     width: 48%;
     margin-right: 1%;
     margin-left: 1%;
-    background-color: rgba(147, 197, 82, 0.123);
+    background-color: rgb(230 214 183 / 11%);
+}
+.btn-warning{
+    color: #f1f2f3;
+    background-color: #51514e;
+    border-color: #353430;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.table-secondary, .table-secondary>td, .table-secondary>th {
+    background-color: #5b79ff08;
+    border-color: #5b79ff08;
 }

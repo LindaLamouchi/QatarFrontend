@@ -6,9 +6,33 @@
     margin-left: 1%;
 }
 .title{
-    font-size: 30px;
-    color: brown;
+    background-color: #ffc107;
+    font-size: 40px;
+    color: rgb(15, 2, 1);
     padding-left: 2%;
     font-weight: bold;
-    padding-top: 2%;
+   
+}
+.content{
+    padding-top: 1%;
+    margin-top: 1%;
+}
+.btn-warning{
+    color: #f1f2f3;
+    background-color: #51514e;
+    border-color: #353430;
+}
+.btn-danger {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.table-secondary, .table-secondary>td, .table-secondary>th {
+    background-color: #5b79ff08;
+    border-color: #5b79ff08;
+    font-style: normal;
+}
+td{ font-style: normal;}
+.note{
+    font-size: small;
 }

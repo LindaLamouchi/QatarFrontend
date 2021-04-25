@@ -37,12 +37,11 @@ export class UserService {
 
   saveTeam(name:any) {
      this.http.post('http://localhost:8090/addTeam', {
-      name: name,
-      players: '',
-      coach: ''
+      name: name
     })
     .subscribe(
       () => {
+        alert("New team is added to the list")
         console.log('Enregistrement terminé !');
       },
       (error) => {
@@ -53,11 +52,49 @@ export class UserService {
   deleteTeam(id: number) {
     return this.http.delete('http://localhost:8090/deleteTeam/'+id);
   }
+  //get the players within a specific team
   getPlayers(id:number) {
     return this.http.get('http://localhost:8090/getPlayerT/'+id,{responseType:'json'});
   }
+  //get the full list of players
   getPlayersList() {
     return this.http.get('http://localhost:8090/getPlayers',{responseType:'json'});
   }
+  //add a new player to players' list
+  addPlayer(player:any){
+    this.http.post('http://localhost:8090/addPlayer',{
+    "firstName":player.firstName,
+    "lastName":player.lastName,
+    "age":player.age,
+    "playerRole":player.playerRole
+    }) .subscribe(
+      () => {
+        console.log('Enregistrement terminé !');
+        alert("Done");
+      },
+      (error) => {
+        console.log('Erreur ! : ' + error);
+      }
+    );
+  }
+  //update a player's info add him to a new team
+  addToTeam(player:any,idt:number) {
+    this.http.put('http://localhost:8090/SetTeamPlayer/'+idt, {
+      "idPlayer": player.idPlayer,
+      "firstName": player.firstName,
+      "lastName": player.lastName,
+      "age": player.age,
+      "playerRole": player.playerRole
+   })
+   .subscribe(
+     () => {
+      console.log('a player is added to the list');
+     },
+     (error) => {
+       console.log('Erreur ! : ' + error);
+     }
+   );
+ }
+
 }
 

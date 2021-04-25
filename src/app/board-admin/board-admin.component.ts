@@ -16,11 +16,13 @@ export class BoardAdminComponent implements OnInit {
   dataSource:Array<any>;
   name: any = {};
   errorMessage = '';
-  
+  size:number;
+ 
   dataplayers:any;
-
   pageSize:number=2;
   page:number=1;
+  pagee:number=1;
+  sizee:number;
   myInnerHeight: Window["innerHeight"];
   width:Window["innerWidth"];
   constructor(private userService: UserService,private authService: AuthService, private router: Router) { }
@@ -32,6 +34,7 @@ export class BoardAdminComponent implements OnInit {
         data => {
          this.dataSource= data;
          console.log(this.dataSource);
+         this.size=this.dataSource.length;
         },
         err => {
           console.log( JSON.parse(err.error).message);
@@ -43,20 +46,16 @@ export class BoardAdminComponent implements OnInit {
         data => {
          this.dataplayers= data;
          console.log(this.dataplayers);
+         this.sizee=this.dataplayers.length;
         },
         err => {
           console.log( JSON.parse(err.error).message);
         }
       )
    
-    this.userService.getAdminBoard().subscribe(
-      data => {
-        this.content = data;
-      },
-      err => {
-        this.content = JSON.parse(err.error).message;
-      }
-    );
+
+   
+  
     
   }
   divT(){

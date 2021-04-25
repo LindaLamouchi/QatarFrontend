@@ -1,1 +1,65 @@
-<p>add-player works!</p>
+<p class="title">Add a new player</p>  
+<div class="container">
+  
+  <form 
+        name="form"
+        
+        #f="ngForm"
+        class="spacerR">
+
+        <fieldset class="w3-container w3-blue">
+         
+          <div class="w3-container spacer ">
+            <h2>Fill this form below</h2>
+          
+            <table class="w3-table-all w3-card-4 spacer ">
+             
+              <tr>
+               
+                <td> 
+                  <div class="form-group spacerR">
+                    <label class="control-label" for="disabledInput">Player F_name * </label>
+                    <input type="text" class="form-control" name="a"  placeholder="Yassine.." 
+                    [(ngModel)]="form.firstName" #firstName="ngModel" required>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group spacerR">
+                    <label class="control-label" for="disabledInput">Player L_name * </label>
+                    <input type="text" class="form-control" name="n"  placeholder="..."
+                     [(ngModel)]="form.lastName" #lastName="ngModel" required>
+                  </div>
+                </td> 
+              </tr>
+              <tr>
+                <td>
+                  <fieldset>
+                    <label class="control-label" for="disabledInput">Age *</label>
+                    <input type="text" class="form-control" maxlength="10" name="r" placeholder="25 .." 
+                    [(ngModel)]="form.age" #age="ngModel" required>
+                  </fieldset>
+      
+                </td>
+              <td class="spacerR"> 
+                <div class="form-group spacerR">
+                  <label for="disabledInput" >Player Role *</label>
+                  <input type="text" class="form-control" maxlength="20" 
+                   placeholder="defence.." [(ngModel)]="form.playerRole" name="p" #playerRole="ngModel" required>
+                </div>
+              </td>
+              
+              
+             
+              
+              </tr>
+            </table>
+          </div>
+      
+         
+         
+         
+         
+          <button class="btn btn-warning"  (click)="savePlayer()">Save</button>
+        </fieldset>
+      </form>
+</div>

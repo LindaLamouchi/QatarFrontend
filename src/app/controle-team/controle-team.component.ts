@@ -13,18 +13,22 @@ id:number;
 dataPl:any;
 pageSize:number=2;
 page:number=1;
-
+size:number;
+listItems:any; //players list
+selectedObject:any;
   constructor(public activatedRoute:ActivatedRoute, public router:Router,private userService: UserService,private authService: AuthService) { 
     this.id=activatedRoute.snapshot.params['id'];
     console.log(this.id);
   }
 
   ngOnInit(): void {
+    this.dropdownRefresh();
     this.userService.getPlayers(this.id)
     .subscribe(
       data => {
        this.dataPl= data;
        console.log(this.dataPl);
+        this.size=this.dataPl.length;
       },
       err => {
         console.log( JSON.parse(err.error).message);
@@ -32,4 +36,17 @@ page:number=1;
     )
   }
 
+  dropdownRefresh(){
+    this.userService.getPlayersList().subscribe(data=>{
+      this.listItems=data;
+    });
+  }
+
+  
+  getPlayer(){
+    this.userService.addToTeam(this.selectedObject,this.id);
+    alert("New player is added to the list");
+    window.location.reload();
+
+  }
 }

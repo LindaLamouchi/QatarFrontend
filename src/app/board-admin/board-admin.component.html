@@ -1,7 +1,7 @@
 <div style="padding-left: 2%; padding-right: 2%;">
   <div>
       <header class="jumbotron">
-        <p>{{ content }}</p>
+        <h3>Admin Board</h3> 
       </header>
   </div>
    <div class="row">
@@ -39,7 +39,7 @@
          </thead>
          <tbody>
            
-          <tr *ngFor="let team of dataSource | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
+          <tr *ngFor="let team of dataSource | slice:(page-1) * pageSize : (page-1) * pageSize + pageSize">
              <td>#</td>
               <td>{{team.idTeam}}</td>
               <td>{{team.name}}</td>
@@ -72,35 +72,34 @@
            
           
             <tr class="table-secondary">
-              <th scope="col"></th>
-              <th scope="col">ID Player</th>
+              
+              <th scope="col">ID_Player</th>
               <th scope="col">Age</th>
               <th scope="col">F_name</th>
               <th scope="col">L_name</th>
               <th scope="col">Role</th>
-              <th scope="col">Team</th>
+              
               <th scope="col" colspan="2">Controle</th>
             </tr>
          </thead>
          <tbody>
                     
-          <tr *ngFor="let playerr of dataplayers | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
-             <td>#</td>
+          <tr *ngFor="let playerr of dataplayers | slice: (pagee-1) * pageSize : (pagee-1) * pageSize + pageSize">
+             
               <td>{{playerr.idPlayer}}</td>
               <td>{{playerr.age}}</td>
               <td>{{playerr.firstName}}</td>
               <td>{{playerr.lastName}}</td>
               <td>{{playerr.playerRole}}</td>
-              <td>{{playerr.team.name}}</td>
+              
             <td colspan="2">
-              <button type="button" class="btn btn-danger" style="margin-right:'5%'" (click)='onEditPlayer(playerr.id_player)'>Get more inf.</button>
               <button type="button" class="btn btn-warning"  (click)='ondeletePlayer(playerr.id_player)'>Delete</button>
             </td>
           </tr>
            
           </tbody>
         </table>
-        <ngb-pagination class="d-flex justify-content-end" [(page)]="page" [pageSize]="pageSize" [collectionSize]="dataplayers.length"></ngb-pagination>
+        <ngb-pagination class="d-flex justify-content-end" [(page)]="pagee" [pageSize]="pageSize" [collectionSize]="sizee"></ngb-pagination>
       
       </div>
   
