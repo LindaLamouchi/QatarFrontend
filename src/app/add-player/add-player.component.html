@@ -1,65 +1,100 @@
-<p class="title">Add a new player</p>  
-<div class="container">
+<div class="row">
   
-  <form 
-        name="form"
-        
-        #f="ngForm"
-        class="spacerR">
-
-        <fieldset class="w3-container w3-blue">
-         
-          <div class="w3-container spacer ">
-            <h2>Fill this form below</h2>
+  <div class="column">
+    <p class="title">Add a new player</p>  
+    <form 
+          name="form"
           
-            <table class="w3-table-all w3-card-4 spacer ">
-             
-              <tr>
-               
+          #f="ngForm"
+          class="spacerR">
+
+          <fieldset class="w3-container w3-blue">
+          
+            <div class="w3-container" style="background-color: rgba(71, 70, 70, 0.062);
+            padding-bottom: 2%; padding-left: 2%; ">
+              <h2>Fill this form below</h2>
+            
+              <table class="w3-table-all w3-card-4 ">
+              
+                <tr>
+                
+                  <td> 
+                    <div class="form-group">
+                      <label class="control-label" for="disabledInput">Player F_name * </label>
+                      <input type="text" class="form-control" name="a"  placeholder="Yassine.." 
+                      [(ngModel)]="form.firstName" #firstName="ngModel" required>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <label class="control-label" for="disabledInput">Player L_name * </label>
+                      <input type="text" class="form-control" name="n"  placeholder="..."
+                      [(ngModel)]="form.lastName" #lastName="ngModel" required>
+                    </div>
+                  </td> 
+                </tr>
+                <tr>
+                  <td>
+                    <fieldset>
+                      <label class="control-label" for="disabledInput">Age *</label>
+                      <input type="text" class="form-control" maxlength="10" name="r" placeholder="25 .." 
+                      [(ngModel)]="form.age" #age="ngModel" required>
+                    </fieldset>
+                  </td>
                 <td> 
-                  <div class="form-group spacerR">
-                    <label class="control-label" for="disabledInput">Player F_name * </label>
-                    <input type="text" class="form-control" name="a"  placeholder="Yassine.." 
-                    [(ngModel)]="form.firstName" #firstName="ngModel" required>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group spacerR">
-                    <label class="control-label" for="disabledInput">Player L_name * </label>
-                    <input type="text" class="form-control" name="n"  placeholder="..."
-                     [(ngModel)]="form.lastName" #lastName="ngModel" required>
-                  </div>
-                </td> 
-              </tr>
-              <tr>
-                <td>
                   <fieldset>
-                    <label class="control-label" for="disabledInput">Age *</label>
-                    <input type="text" class="form-control" maxlength="10" name="r" placeholder="25 .." 
-                    [(ngModel)]="form.age" #age="ngModel" required>
+                    <label class="control-label" for="disabledInput">Player Role *</label>
+                    <input type="text" class="form-control" maxlength="20" 
+                    placeholder="defence.." [(ngModel)]="form.playerRole" name="p" #playerRole="ngModel" required>
                   </fieldset>
-      
                 </td>
-              <td class="spacerR"> 
-                <div class="form-group spacerR">
-                  <label for="disabledInput" >Player Role *</label>
-                  <input type="text" class="form-control" maxlength="20" 
-                   placeholder="defence.." [(ngModel)]="form.playerRole" name="p" #playerRole="ngModel" required>
-                </div>
-              </td>
-              
-              
-             
-              
               </tr>
-            </table>
-          </div>
-      
-         
-         
-         
-         
-          <button class="btn btn-warning"  (click)="savePlayer()">Save</button>
-        </fieldset>
-      </form>
+              </table>
+            </div>
+            <br>
+            <button class="btn btn-warning"  (click)="savePlayer()" style="margin-right: 1%;">Save</button>
+            <button type="button" class="btn btn-dark" (click)="back()">Back</button>
+          </fieldset>
+    </form>
+  </div>
+  
+  <div class="column">
+    <p class="title">Add a new Coach</p>  
+    <form  name="forme" #f="ngForm">
+
+          <fieldset class="w3-container w3-blue">
+          
+            <div class="w3-container" style="background-color: rgba(71, 70, 70, 0.062);
+            padding-bottom: 2%; padding-left: 2%; padding-right: 0%; ">
+              <h2>Fill this form below</h2>
+            
+              <table class="w3-table-all w3-card-4 spacer ">
+              
+                <tr>
+                
+                  <td> 
+                    <div class="form-group">
+                      <label class="control-label" for="disabledInput">Coach F_name * </label>
+                      <input type="text" class="form-control" name="h"  placeholder="First Name.." 
+                      [(ngModel)]="forme.firstName" #firstName="ngModel" required>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <label class="control-label" for="disabledInput">Coach L_name * </label>
+                      <input type="text" class="form-control" name="d"  placeholder="Last NAme..."
+                      [(ngModel)]="forme.lastName" #lastName="ngModel" required>
+                    </div>
+                  </td> 
+                </tr>
+                <tr>
+              </tr>
+              </table>
+            </div>
+            <br>
+            <button class="btn btn-warning"  (click)="saveCoach()" style="margin-right: 1%;">Save</button>
+            <button type="button" class="btn btn-dark" (click)="back()">Back</button>
+          </fieldset>
+    </form>
+  </div>
 </div>

@@ -8,10 +8,6 @@ const API_URL = 'http://localhost:8090/api/test/';
   providedIn: 'root'
 })
 export class UserService {
- 
-
- 
-
   constructor(private http: HttpClient) { }
 
   getPublicContent(): Observable<any> {
@@ -30,7 +26,7 @@ export class UserService {
     return this.http.get(API_URL + 'admin', { responseType: 'text' });
   }
 
-  
+  /***********************************Team************************************************ */
   getTeamList(): Observable<any> {
     return this.http.get('http://localhost:8090/getTeams',{responseType:'json'});
   }
@@ -52,6 +48,8 @@ export class UserService {
   deleteTeam(id: number) {
     return this.http.delete('http://localhost:8090/deleteTeam/'+id);
   }
+
+  /********************************************************Player************************************** */
   //get the players within a specific team
   getPlayers(id:number) {
     return this.http.get('http://localhost:8090/getPlayerT/'+id,{responseType:'json'});
@@ -70,7 +68,6 @@ export class UserService {
     }) .subscribe(
       () => {
         console.log('Enregistrement terminé !');
-        alert("Done");
       },
       (error) => {
         console.log('Erreur ! : ' + error);
@@ -95,6 +92,55 @@ export class UserService {
      }
    );
  }
+ //delete player by id
+ deletePlayer(id: number) {
+  return this.http.delete('http://localhost:8090/deletePlayer/'+id);
+}
+
+  //***************************************************Coach manipulation
+  //add a new coach
+  addCoach(forme: any) {
+    this.http.post('http://localhost:8090/addCoach', {
+      "firstName": forme.firstName,
+      "lastName": forme.lastName
+   })
+   .subscribe(
+     () => {
+      console.log('a coach is added to the list');
+     },
+     (error) => {
+       console.log('Erreur ! : ' + error);
+     }
+   );
+  }
+  //get coach list
+  getCoachList() {
+    return this.http.get('http://localhost:8090/getCoaches',{responseType:'json'});
+  }
+  //delete coach
+  deleteCoach(idCoach: number) {
+    return this.http.delete('http://localhost:8090/deleteCoach/'+idCoach);
+  }
+  //add a coach  to a specific team
+  addCoachToTeam(selectedCoach: any, id: number) {
+    this.http.put("http://localhost:8090/updateCoach/"+id, {
+      "idCoach": selectedCoach.idCoach,
+      "firstName": selectedCoach.firstName,
+      "lastName": selectedCoach.lastName
+   })
+   .subscribe(
+     () => {
+      console.log('a new coach is affected to this team');
+     },
+     (error) => {
+       console.log('Erreur ! : ' + error);
+     }
+   );
+  }
+  //get coach by team id
+  getTeamByID(id:number){
+    return this.http.get('http://localhost:8090/getTeamCoach/'+id,{responseType:'json'});
+  }
 
 }
 

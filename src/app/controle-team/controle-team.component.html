@@ -3,17 +3,33 @@
     <div class="row">
       <div class="column font-weight-light">
        
-        Would you like to add a player to this list? Please Choose from the Drop-Down list below:
+        Would you like to add a player or change the coach of this list? Please Choose from the Drop-Down list below:
         <br>
-        <select type="text" [(ngModel)]="selectedObject">
-        <option value="0" class="text-muted">-Select a player-</option>
-        <option *ngFor='let dl of listItems' class="font-weight-normal" [ngValue]="dl">
-          {{dl.firstName}}
-          {{dl.lastName}}
-        </option>
-      </select> 
-      <br><br>
-      <button class="btn-warning" (click)='getPlayer()'>Add a player</button>
+        
+        <div class="row">
+          <div class="colomn">
+            <select type="text" [(ngModel)]="selectedObject">
+              <option value="0" class="text-muted">-Select a player-</option>
+              <option *ngFor='let dl of listItems' class="font-weight-normal" [ngValue]="dl">
+                {{dl.firstName}}
+                {{dl.lastName}}
+              </option>
+            </select> 
+            <br>
+            <button class="btn-warning" (click)='getPlayer()'>Add a player</button>
+          </div>
+          <div class="colomn" style="padding-left: 20%;">
+            <select type="text" [(ngModel)]="selectedCoach">
+              <option value="0" class="text-muted">-Select the Coach-</option>
+              <option *ngFor='let tcoach of coachList' class="font-weight-normal" [ngValue]="tcoach">
+                {{tcoach.firstName}}
+                {{tcoach.lastName}}
+              </option>
+            </select> 
+            <br>
+            <button class="btn-warning" (click)='getCoach()'>update Coach</button>
+          </div>
+        </div>
       <br><br><br>
       <div class="badge badge-primary text-wrap" style="width: 6rem;">
         Note :
@@ -27,10 +43,14 @@
       </div>
        <div class="column">
            <div class="card">
+           <h3>Coach</h3> 
+           <p>
+             [Mr/Me] : {{coach.firstName}}
+           </p>
            <h3>Players</h3> 
            </div>
            <div>
-            <table class="table table-hover" *ngIf="dataPl" max-width='fit-content'>
+            <table class="table table-dark" *ngIf="dataPl" max-width='fit-content'> <!-- table-hover-->
               <thead>
                 <tr class="table-secondary" style="font-weight: normal;">
                   <th scope="col">idPlayer</th>

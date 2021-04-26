@@ -36,3 +36,9 @@ td{ font-style: normal;}
 .note{
     font-size: small;
 }
+.btn-warning{
+    color: #f1f2f3;
+    background-color: #51514e;
+    border-color: #3b3a36;
+    border-radius: 3px;
+}

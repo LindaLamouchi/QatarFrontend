@@ -1,19 +1,21 @@
-<div style="padding-left: 2%; padding-right: 2%;">
-  <div>
-      <header class="jumbotron">
-        <h3>Admin Board</h3> 
-      </header>
-  </div>
+<div  style="padding:0.5% 2% 2% 2%;background-color: rgba(71, 70, 70, 0.116);">
+  
    <div class="row">
     <div class="column"> <!--Teams Configuration-->
+     
+      <div>
+        <header class="jumbotron">
+          <h5>Admin Board</h5> 
+        </header>
+      </div>
       <!-- Here you can add a new team name it is hidden : onClick on add new team it'll become visible-->
       <div 
-       class="input-group teamn" *ngIf='div1' style="margin-bottom: 1%;">
+       class="input-group teamn" *ngIf='div1' style="margin-bottom: 0.3%;">
         
        <input type="text" 
         name="name"
         [(ngModel)]="name"
-        class="form-control" placeholder="Team name" aria-label="Team username" aria-describedby="basic-addon2">
+        class="form-control" aria-describedby="basic-addon2">
        
         <div class="input-group-append">
           <button class="btn btn-outline-info" type="button" (click)="onCl()" >Save</button>
@@ -26,10 +28,8 @@
       </div>
       <!--Here we load all Teams data : onClick on info we'll get to see all players of a specific Team -->
       <div>
-        <table class="table table-hover" *ngIf="dataSource" max-width='fit-content'>
+        <table class="table table-dark" *ngIf="dataSource" max-width='fit-content'>
           <thead>
-           
-          
             <tr class="table-secondary">
               <th scope="col"></th>
               <th scope="col">ID</th>
@@ -44,15 +44,15 @@
               <td>{{team.idTeam}}</td>
               <td>{{team.name}}</td>
             <td colspan="2">
-              <button type="button" class="btn btn-danger" style="margin-right:'5%'" (click)='onEdit(team.idTeam)'>Get more inf.</button>
+              <button type="button" class="btn" style="margin-right:'5%'; color:#ffc107;" (click)='onEdit(team.idTeam)'>Get more inf.</button>
               <button type="button" class="btn btn-warning"  (click)='onSupprime(team.idTeam)'>Delete</button>
             </td>
           </tr>
            
           </tbody>
-        </table>
+          </table>
+          
         <ngb-pagination class="d-flex justify-content-end" [(page)]="page" [pageSize]="pageSize" [collectionSize]="dataSource.length"></ngb-pagination>
-      
       </div>
     </div>
   
@@ -62,15 +62,13 @@
     <div class="column"> <!--Players Configuration-->
       
       <!--OnClick button we are redirected to add new player page-->
-      <div style="text-align: right; padding-bottom: 0.4%;">   
+      <div style="text-align: right; padding-bottom: 1px;">   
          <button type="button" class="btn btn-warning" (click)='newPlayer()'>Add a new Player</button>
       </div>
       <!--Here we load all Teams data : onClick on info we'll get to see all players of a specific Team -->
       <div>
-        <table class="table table-hover" *ngIf="dataplayers" max-width='fit-content'>
+        <table class="table table-dark" *ngIf="dataplayers" max-width='fit-content'>
           <thead>
-           
-          
             <tr class="table-secondary">
               
               <th scope="col">ID_Player</th>
@@ -78,7 +76,6 @@
               <th scope="col">F_name</th>
               <th scope="col">L_name</th>
               <th scope="col">Role</th>
-              
               <th scope="col" colspan="2">Controle</th>
             </tr>
          </thead>
@@ -93,7 +90,7 @@
               <td>{{playerr.playerRole}}</td>
               
             <td colspan="2">
-              <button type="button" class="btn btn-warning"  (click)='ondeletePlayer(playerr.id_player)'>Delete</button>
+              <button type="button" class="btn btn-warning"  (click)='ondeletePlayer(playerr.idPlayer)'>Delete</button>
             </td>
           </tr>
            
@@ -102,7 +99,37 @@
         <ngb-pagination class="d-flex justify-content-end" [(page)]="pagee" [pageSize]="pageSize" [collectionSize]="sizee"></ngb-pagination>
       
       </div>
-  
+       <!--Coach table-->
+       <div>
+        <div style="text-align: right; padding-bottom: 1px;">   
+          <button type="button" class="btn btn-warning" (click)='newPlayer()'>Add a new Coach</button>
+       </div>
+          <table class="table table-dark" width='fit-content' style="padding-top: 1px;">
+            <thead>
+              <tr class="table-secondary">
+                <th scope="col"> </th>
+                <th scope="col">ID_Coach</th>
+                <th scope="col">Coach Full Name</th>
+                <th scope="col">Controle</th>
+              </tr>
+           </thead>
+           <tbody>
+             
+            <tr *ngFor="let Coach of dataCoach | slice:(pageCoach-1) * pageSizee : (pageCoach-1) * pageSizee + pageSizee">
+                <td>#</td>
+                <td>{{Coach.idCoach}}</td>
+                <td>{{Coach.firstName}} {{Coach.lastName}}</td>
+
+              <td>
+                <button type="button" class="btn btn-warning"  (click)='onSupprimeCoach(Coach.idCoach)'>Delete</button>
+              </td>
+            </tr>
+             
+            </tbody>
+          </table>
+          <ngb-pagination class="d-flex justify-content-end" [(page)]="pageCoach" [pageSize]="pageSizee" [collectionSize]="sizeCo"></ngb-pagination>
+      </div>
+    
     </div>
   </div>
   </div>

@@ -10,6 +10,7 @@ import { UserService } from '../_services/user.service';
 })
 export class AddPlayerComponent implements OnInit {
   form: any = {};
+  forme:any={}; //a new coach object 
   constructor(private userService: UserService,private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -17,6 +18,18 @@ export class AddPlayerComponent implements OnInit {
   savePlayer(){
     console.log(this.form);
     this.userService.addPlayer(this.form);
+
+    alert("A player is added successfully");
+    this.router.navigate(['/admin']);
+   
+  }
+  back(){
+    this.router.navigate(['/admin']);
+  }
+  saveCoach(){
+    this.userService.addCoach(this.forme);
+    alert("A coach is added successfully");
+    this.router.navigate(['/admin']);
   }
 
 }

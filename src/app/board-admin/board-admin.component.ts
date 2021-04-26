@@ -16,19 +16,30 @@ export class BoardAdminComponent implements OnInit {
   dataSource:Array<any>;
   name: any = {};
   errorMessage = '';
-  size:number;
- 
+  size:number; //team list size
+
+
+  pageSizee:number=1;//nbr de coach a afficher sur  admin board
+  
+
   dataplayers:any;
-  pageSize:number=2;
-  page:number=1;
-  pagee:number=1;
-  sizee:number;
+  pageSize:number=3; //player & team
+  dataCoach:any; //coachs data list
+  sizeCo:number;
+
+  page:number=1; //team page reference
+  pagee:number=1; //player Ref page
+  pageCoach:number=1; //la i eme page du coach
+
+  sizee:number; //data length of the team
   myInnerHeight: Window["innerHeight"];
   width:Window["innerWidth"];
   constructor(private userService: UserService,private authService: AuthService, private router: Router) { }
  
   ngOnInit() {
-   
+    //intialize coach list
+    this.getAllCoachs(); 
+    //initalize Team List
       this.userService.getTeamList()
       .subscribe(
         data => {
@@ -40,7 +51,8 @@ export class BoardAdminComponent implements OnInit {
           console.log( JSON.parse(err.error).message);
         }
       );
-
+    
+       //initalize player List
       this.userService.getPlayersList()
       .subscribe(
         data => {
@@ -79,7 +91,7 @@ export class BoardAdminComponent implements OnInit {
      window.location.reload();
     })
    }
-/** Player Config **/
+/*************************** Player Config************************************/
    newPlayer(){
     this.router.navigate(['newPlayer']);
    }
@@ -87,10 +99,34 @@ export class BoardAdminComponent implements OnInit {
 
    }
    ondeletePlayer(id:number){
+   this.userService.deletePlayer(id).subscribe(data=>{
+    alert(' player is deleted successfully');
+    this.router.navigate(['/admin']);
+    window.location.reload();
+   })
+   }
+  //************************************Coach Config************************************* */
+   getAllCoachs(){
+    this.userService.getCoachList()
+    .subscribe(
+      data => {
+       this.dataCoach= data;
+       this.sizeCo=this.dataCoach.length;
+      },
+      err => {
+        console.log( JSON.parse(err.error).message);
+      }
+    );
 
    }
 
-
+   onSupprimeCoach(idCoach : number){
+     this.userService.deleteCoach(idCoach).subscribe(data=>{
+      alert(' Coach is deleted successfully');
+      this.router.navigate(['/admin']);
+      window.location.reload();
+     })
+   }
 
 }
 
